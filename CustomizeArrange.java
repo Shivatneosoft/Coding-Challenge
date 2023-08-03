@@ -21,7 +21,32 @@ public class CustomizeArrange {
         int[] pos = { 3, 2, 4, 1, 0 };
 
         solutionUsingNewArray(num,pos);
+        solutionUsingReplacementProcess(num,pos);
     }
+
+    private static void solutionUsingReplacementProcess(int[] num, int[] pos) {
+        int pointer = 0;
+        int numPointer,posPointer = 0;
+        int numValue, posValue;
+        while (!checkPosition(pos)){
+            posValue = pos[pos[pointer]];
+            numValue = num[pos[pointer]];
+            pos[pos[pointer]] = pos[pointer];
+            num[pos[pointer]] = num[pointer];
+            pos[pointer] = posValue;
+            num[pointer] = numValue;
+        }
+        System.out.println(Arrays.toString(num));
+    }
+
+    private static boolean checkPosition(int[] pos) {
+        for (int i = 0; i < pos.length; i++) {
+            if(pos[i] != i)
+                return false;
+        }
+        return true;
+    }
+
     private static void solutionUsingNewArray(int[] num, int[] pos) {
         int[] output = new int[num.length];
         for (int i = 0; i < pos.length; i++) {
