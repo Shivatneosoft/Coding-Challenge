@@ -26,7 +26,6 @@ public class CustomizeArrange {
 
     private static void solutionUsingReplacementProcess(int[] num, int[] pos) {
         int pointer = 0;
-        int numPointer,posPointer = 0;
         int numValue, posValue;
         while (!checkPosition(pos)){
             posValue = pos[pos[pointer]];
