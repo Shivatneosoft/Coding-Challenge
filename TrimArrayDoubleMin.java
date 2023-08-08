@@ -16,17 +16,18 @@ The trimmed array is [6, 4] where 6 < 2 × 4.
  */
 public class TrimArrayDoubleMin {
     public static void main(String[] args) {
-//        int[] input = {4, 6, 1, 7, 5, 9, 2};
-        int[] input = {4, 2, 6, 4, 9};
+        int[] input = {4, 6, 1, 7, 5, 9, 2};
+//        int[] input = {4, 2, 6, 4, 9};
         solutionUsingTrim(input);
     }
 
     private static void solutionUsingTrim(int[] input) {
+        int lenght = input.length;
         while(true){
             int max = Arrays.stream(input).max().getAsInt();
             int min = Arrays.stream(input).min().getAsInt();
             if((min * 2) > max) {
-                System.out.println(Arrays.toString(input));
+                System.out.println(lenght - input.length);
                 break;
             }
             else {
