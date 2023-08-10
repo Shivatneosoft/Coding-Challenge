@@ -16,7 +16,8 @@ The trimmed array is [6, 4] where 6 < 2 × 4.
  */
 public class TrimArrayDoubleMin {
     public static void main(String[] args) {
-        int[] input = {4, 6, 1, 7, 5, 9, 2};
+        int[] input = {1,4,2,6,8,7,5,6};
+//        int[] input = {4, 6, 1, 7, 5, 9, 2};
 //        int[] input = {4, 2, 6, 4, 9};
         solutionUsingTrim(input);
     }
