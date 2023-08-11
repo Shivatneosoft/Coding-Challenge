@@ -24,7 +24,6 @@ public class PascalsTriangle {
     private static void solution(int height) {
         int currentsize = 1;
         int[][] output = new int[height][];
-
         while (height != 0){
             int[] rowOutput = new int[currentsize];
             for (int i = 0; i < currentsize; i++) {
@@ -38,8 +37,21 @@ public class PascalsTriangle {
             currentsize++;
             height --;
         }
+        printingTheTriangle(output);
+    }
+
+    private static void printingTheTriangle(int[][] output) {
+        int space = output.length;
         for (int i = 0; i < output.length; i++) {
-            System.out.println(Arrays.toString(output[i]));
+            for (int j = 0; j < space; j++)
+                System.out.print(" ");
+            for (int j = 0; j < output[i].length; j++) {
+                System.out.print(output[i][j]);
+                if(j != 0 || j != output[i].length-1)
+                    System.out.print(" ");
+            }
+            space--;
+            System.out.println();
         }
     }
 }
