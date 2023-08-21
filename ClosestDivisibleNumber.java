@@ -25,8 +25,8 @@ So, Output is -18
  */
 public class ClosestDivisibleNumber {
     public static void main(String[] args) {
-//        int target = 13, divisor = 4;
-        int target = -15, divisor = 6;
+        int target = 13, divisor = 4;
+//        int target = -15, divisor = -6;
         normalSolution(target,divisor);
     }
 
@@ -36,12 +36,10 @@ public class ClosestDivisibleNumber {
         else {
             int multiplier = target / divisor;
             int front = divisor * multiplier;
-            int rear;
-            if(target < 0)
-                rear = divisor * (multiplier - 1);
-            else
-                rear = divisor * (multiplier + 1);
-            if ((front - target) > (rear - target))
+            int rear = divisor < 0 ? front + divisor : front - divisor;
+            int frontDifference = Math.abs(front - target);
+            int rearDifference = Math.abs(target - rear);
+            if (frontDifference >= rearDifference)
                 System.out.println(rear);
             else
                 System.out.println(front);
