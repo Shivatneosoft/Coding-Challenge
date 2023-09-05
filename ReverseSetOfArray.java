@@ -26,8 +26,8 @@ Explanation: First group consists of elements
  */
 public class ReverseSetOfArray {
     public static void main(String[] args) {
-        int n = 10;
-        int k = 4;
+        int n = 11;
+        int k = 3;
         int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 //        solutionUsingWhileLoop(n, k, arr);
         solutionUsingForLoop(n, k, arr);
