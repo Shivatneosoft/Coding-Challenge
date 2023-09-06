@@ -36,14 +36,26 @@ public class CollectedWater {
     }
 
     private static int findLeftMax(int[] height, int index) {
-        while (index != 0 &&height[index-1] > height[index])
-            index--;
+        int max = 0;
+        for (int i = 0; i < index; i++)
+            if(max < height[i])
+                max = height[i];
+        for (int i = 0; i < index; i++) {
+            if(height[i] == max)
+                return i;
+        }
         return index;
     }
 
     private static int findRightMax(int[] height, int index) {
-        while (index != height.length-1 &&height[index+1] > height[index])
-            index++;
+        int length = height.length;
+        int max = 0;
+        for (int i = index; i < length; i++)
+            if (max < height[i])
+                max = height[i];
+        for (int i = index; i< length; i++)
+            if(height[i] == max)
+                return i;
         return index;
     }
 
@@ -64,19 +76,15 @@ public class CollectedWater {
         int collectWater = 0;
         int secondHeightValue = height[secondHeightIndex];
         if(end == 0){
-            for (int i = secondHeightIndex+1; i < currentHeightIndex; i++) {
-                if(height[i] <= secondHeightValue){
-                    collectWater = collectWater + (secondHeightValue - height[i]);
-                }
-            }
+            int volume = (currentHeightIndex - secondHeightIndex) * secondHeightValue;
+            int sum = Arrays.stream(Arrays.copyOfRange(height, secondHeightIndex,currentHeightIndex)).sum();
+            collectWater = volume - sum;
             return checkIfSecondMaxExist(secondHeightIndex,end,savedWater + collectWater,Arrays.copyOfRange(height,0,secondHeightIndex));
         }
         else {
-            for (int i = 0; i < secondHeightIndex; i++) {
-                if(height[i] <= secondHeightValue){
-                    collectWater = collectWater + (secondHeightValue - height[i]);
-                }
-            }
+            int volume = (currentHeightIndex - secondHeightIndex) * secondHeightValue;
+            int sum = Arrays.stream(Arrays.copyOfRange(height, currentHeightIndex, secondHeightIndex)).sum();
+            collectWater = volume - sum;
             return checkIfSecondMaxExist(secondHeightIndex,height.length-1,savedWater + collectWater,Arrays.copyOfRange(height,secondHeightIndex+1,height.length));
         }
     }
