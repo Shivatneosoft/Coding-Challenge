@@ -17,13 +17,13 @@ So the count of the set bit is 1.
 public class CountSetBit {
     public static void main(String[] args) {
 //        int input = 6;
-        int input = 8;
+        int input = 13;
         solutionUsingWhileLoop(input);
     }
 
     private static void solutionUsingWhileLoop(int input) {
-        int count = 1;
-        while (input != 1){
+        int count = 0;
+        while (input > 0){
             if(input % 2 == 1)
                 count ++;
             input = input/2;
